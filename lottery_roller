@@ -1,0 +1,53 @@
+# this code will roll n numbers from an input range and the chosen numbers will be removed from the inventory
+# the inventory itself is created by the input variable
+# randint will select numbers
+
+
+import random
+from time import sleep
+lottery = []
+#declare variables and an empty list
+
+fields = int(input("\nPlease provide the maxmimum amount of fields in the lottery game, eg 90:  \n"))
+selection = int(input("\nplease provide the amount of numbers the player has to pick eg 5:  \n"))
+
+for index in range(fields):
+    index = index + 1
+    lottery.append(index)
+    if index == fields : break
+# fill list with numbers from 1 to the given value in fields  
+   
+# print(lottery) // test print to check if the list is created
+index = fields - 1
+print("First roll:\n")
+while(index != 0):
+    
+    
+# roll selection times new numbers until the list is empty. The rolled out number is removed at every iteration
+# since randint is a range it's not possible to remove an element therefore if a rolled number
+# was already rolled before it will skip the iteration and roll a new number
+# b=1 is also critical as the 0th index is not used therefore we have to force the rolling to index 1
+# otherwise there will be 1 extra roll which we don't want
+
+    b = 1
+    while(b <= selection ):
+        a = random.randint(lottery[0], lottery[index])
+        if(a not in lottery): continue
+        index -= 1
+        b += 1
+        print(a)
+        lottery.remove(a)
+
+    #print(lottery)     #test print to see if the list is being emptied
+    sleep(2)
+    
+    question = input ("\nWould you like another roll? yes / no\n")       
+    if (question == "yes"):
+        print("\nRolling new numbers:\n") 
+        pass
+    else: 
+        print("We wish you good fortune!")
+        print("Good Bye!")
+        break
+    
+   
