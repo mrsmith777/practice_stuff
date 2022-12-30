@@ -18,8 +18,8 @@ this is why I'm taking this method.
 '''
 
 import random
-from time import sleep
-import math
+#from time import sleep
+#import math
 
 def myround(x, prec=2, base=.05):
   return round(base * round(float(x)/base),prec)
@@ -27,7 +27,7 @@ def myround(x, prec=2, base=.05):
 user_value = float((input("Please enter your crit strike chance: \n")))
 
 user_list = [int(i) for i in str(user_value) if i.isdigit()]
-print(user_list)
+print("Processing numbers: ", user_list)
 
 rolls = 0
 # check numbers for the digits
@@ -63,7 +63,7 @@ while(rolls <= 100):
 
 if (rolls == 101):
 
-    print (a,b,c,d)
+    print ("The results of rolling individual digits 100 times: ", a,b,c,d)
 
     if(a % 10 /10 >= 0.5):
         #print(a)
@@ -85,7 +85,7 @@ if (rolls == 101):
 
     result = (tens_result + ones_result + first_decimal_result + second_decimal_result )
 
-    print(result)
+    print("Simulated crit strike chance on 100 rolls is: ", result)
 
 
 
