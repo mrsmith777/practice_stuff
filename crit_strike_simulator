@@ -1,19 +1,22 @@
 '''
-This reworked version will take 4 numbers as a format of xx.xx so eg: 22,78%
-The program will place all 4 digits in a 1-9 random number selector and
+This  program will take 4 numbers as a format of xx.xx so eg: 22,78%
+It will then will place all 4 digits in a 1-9 random number selector and
 will create a list with those numbers eg: [2,2,7,8]
 
-each digit will be rolled individually 10 times with a range of 10 and the checking number will be
- x<= input number. therefore a counter is added to "tick" every time the check number is applied or not.
-at 2 the and range 10 there are number 1 and 2 which will tick the counter and any other will not
+Each digit will be rolled individually 100 times and then an average is calculated.
+My initial version didn't contain a round-up so it sometimes created results which
+was deviating from the input value and so I added the myround function. 
+I basically took that from the internet.
 
-at 7, the numbers from 1 to 7 will tick the counter, others will not
+In time I wish to develop my own game with pixelart and I created this program to check how python can 
+be used to produce critical strikes.
 
-This will be repeated 10 times and a rounded average will be printed for each number, divided or multiplied by 10
-according to which positional value the number stands
 
 In my previous experiments I saw that a 1 to 9 randint produces pretty accurate values of expected percentages 
 this is why I'm taking this method.
+
+Comment: This program is working okay when we are not calculating critical strikes above 80%
+Above 80% input the program will start producing some useless numbers.
 
 '''
 
@@ -23,6 +26,7 @@ import random
 
 def myround(x, prec=2, base=.05):
   return round(base * round(float(x)/base),prec)
+  #this function will be used as a number rounder
 
 user_value = float((input("Please enter your crit strike chance: \n")))
 
@@ -56,7 +60,7 @@ while(rolls <= 100):
         # print("Check number for first decimal has been incremented") # test print
         c += 1
 
-    second_decimal = random.randint(1,229) 
+    second_decimal = random.randint(1,9) 
     if (second_decimal <= user_list[3]):
         # print("Check number for second decimal has been incremented") # test print
         d += 1
@@ -68,7 +72,7 @@ if (rolls == 101):
     if(a % 10 /10 >= 0.5):
         #print(a)
         myround(a,2,1)
-        #print("rounded:", a)
+        #print("rounded:", a) test print
     tens_result = a // 10 * 10
 
     if(b % 10 /10 >= 0.5):
