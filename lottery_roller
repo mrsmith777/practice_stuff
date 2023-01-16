@@ -1,6 +1,9 @@
 # this code will roll n numbers from an input range and the chosen numbers will be removed from the inventory
 # the inventory itself is created by the input variable
 # randint will select numbers
+# the program will remove already rolled numbers therefore it's not possible to use it from games
+# which can have the same number multiple times
+# rolling can be repeated until the initial list runs out of elements
 
 
 import random
